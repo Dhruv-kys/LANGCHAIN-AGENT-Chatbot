@@ -16,8 +16,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import RetrievalQA
 
-os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+HF_TOKEN = os.getenv("HF_TOKEN")
+os.environ["HF_TOKEN"] = HF_TOKEN
 
 
 arxiv_wrapper = ArxivAPIWrapper(top_k_results=1, doc_content_chars_max=250)
