@@ -1,0 +1,32 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# --- Virtual Environments ---
+.env
+.venv/
+venv/
+env/
+
+# --- Dependencies ---
+*.egg-info/
+*.egg
+dist/
+build/
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+
+# --- Logs ---
+*.log
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- Other ---
+*.sqlite3
