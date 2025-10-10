@@ -2,7 +2,8 @@
     An AI-powered chatbot built with Streamlit, LangChain, and Groq.
     It supports web, Wikipedia, and arXiv search, along with PDF question answering using embeddings and Chroma.
 
-    Cloud Link : https://langchain-agent-chatbot-5e5pxtercew7hogappclsdv.streamlit.app/
+👾 Working Cloud Link : 
+    https://langchain-agent-chatbot-5e5pxtercew7hogappclsdv.streamlit.app/
 
 ✨ Features
     🔍 Search Integration: Query Wikipedia, arXiv, or DuckDuckGo.
