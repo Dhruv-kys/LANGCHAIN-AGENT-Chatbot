@@ -1,9 +1,9 @@
-langchain
-langchain-community
-langchain-groq
-duckduckgo-search
-arxiv
-wikipedia
-python-dotenv
 streamlit
-langchain_huggingface
+python-dotenv
+langchain
+langchain-groq
+langchain-huggingface
+langchain-text-splitters
+langchain-chroma
+langchain-community
+chromadb
