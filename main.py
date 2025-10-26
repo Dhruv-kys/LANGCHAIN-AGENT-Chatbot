@@ -35,7 +35,7 @@ st.title("🤖 LangChain Chatbot with Search & Tools")
 with st.sidebar:
     st.header("Settings")
     api_key = st.text_input("Groq API Key", type="password")
-    model_name = st.selectbox("Select Model", ["gemma2-9b-it", "deepseek-r1-distill-llama-70b", "llama-3.3-70b-versatile"])
+    model_name = st.selectbox("Select Model", ["openai/gpt-oss-120b", "qwen/qwen3-32b", "llama-3.3-70b-versatile"])
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "Hi! I'm a chatbot who can search the web, Wikipedia, and arXiv. How can I help you today? ❤️"}]
