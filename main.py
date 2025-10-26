@@ -12,7 +12,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain.chains import RetrievalQA
-from langchain.agents import load_tools, initialize_agent, AgentType
+from langchain.agents import initialize_agent, AgentType
 
 HF_TOKEN = st.secrets.get("HF_TOKEN") or os.getenv("HF_TOKEN")
 os.environ["HF_TOKEN"] = HF_TOKEN
@@ -21,10 +21,12 @@ embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 # Tool setup
 arxiv_wrapper = ArxivAPIWrapper(top_k_results=1, doc_content_chars_max=250)
 wiki_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=250)
-search_tools = load_tools(
-    ["wikipedia", "arxiv", "duckduckgo-search"],
-    api_wrappers={"wikipedia": wiki_wrapper, "arxiv": arxiv_wrapper}
-)
+
+arxiv_tool = ArxivQueryRun(api_wrapper=arxiv_wrapper)
+wiki_tool = WikipediaQueryRun(api_wrapper=wiki_wrapper)
+search_tool = DuckDuckGoSearchResults(name="Search")
+
+search_tools = [arxiv_tool, wiki_tool, search_tool]
 
 # Streamlit UI
 st.set_page_config(page_title="🔎LangChain Search Chatbot", page_icon="🤖", layout="wide")
