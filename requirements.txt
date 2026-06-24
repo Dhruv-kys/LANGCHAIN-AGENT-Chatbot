@@ -12,10 +12,11 @@ langgraph
 chromadb
 sentence-transformers
 huggingface-hub
+rank-bm25
 
 arxiv
 wikipedia
-duckduckgo-search
+ddgs
 
 pypdf
 pdfminer.six

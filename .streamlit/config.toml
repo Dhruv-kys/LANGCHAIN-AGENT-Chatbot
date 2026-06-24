@@ -1,0 +1,11 @@
+[server]
+# Streamlit's hot-reload watcher inspects every imported module, which makes
+# `transformers` lazily import optional vision backends (torchvision) that we
+# don't install — producing a flood of harmless ModuleNotFoundError tracebacks
+# at startup. "none" disables the watcher and silences the noise.
+# Use "auto" locally if you want hot-reload while editing.
+fileWatcherType = "none"
+
+[logger]
+# Hide the transformers/torchvision import-probe warnings from the console.
+level = "error"
