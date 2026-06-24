@@ -15,6 +15,31 @@ retrieval (semantic + BM25).
   lexical search for accurate, source-cited answers.
 - **Fast inference** — powered by Groq LLMs.
 
+## Limitations
+
+- **No conversation memory.** Each question is answered on its own — the bot
+  does not remember previous turns, so follow-ups like "what about its
+  population?" won't resolve against earlier messages. The chat history is shown
+  in the UI but is not sent back to the model.
+
+## Hybrid RAG (BM25 + semantic)
+
+PDF question answering uses **hybrid retrieval** — it combines two complementary
+search methods instead of relying on either one alone:
+
+- **Semantic (dense)** — documents are embedded with a HuggingFace
+  sentence-transformer and stored in Chroma. Retrieval uses MMR so the returned
+  chunks are both relevant and diverse. Good at matching *meaning* even when the
+  wording differs.
+- **BM25 (sparse/lexical)** — a classic keyword-ranking algorithm
+  (`rank-bm25`). Good at exact matches: names, acronyms, codes, and rare terms
+  that embeddings often miss.
+
+The two result sets are fused with LangChain's `EnsembleRetriever` (weighted
+rank fusion), giving more robust retrieval than either signal alone. Answers are
+returned with inline source citations (file name and page). The whole pipeline
+lives in [`rag.py`](rag.py).
+
 ## Tech stack
 
 | Component   | Used for             |

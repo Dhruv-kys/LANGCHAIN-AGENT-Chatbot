@@ -1,6 +1,10 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()
+
+# Load the .env that sits next to this file, regardless of the working
+# directory the app was launched from.
+load_dotenv(Path(__file__).with_name(".env"))
 
 import streamlit as st
 from langchain_groq import ChatGroq
